@@ -8,6 +8,7 @@ import {SceneComponent} from './scene/scene.component';
 @Component({
   selector: 'de-app',
   templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS]
 })

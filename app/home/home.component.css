@@ -1,0 +1,5 @@
+/*component styles are encapsulated and only applied to their components*/
+* {
+  text-align: center;
+  /*color: #01A900;*/
+}
