@@ -5,5 +5,7 @@
 <footer>
   <small>{{api.title}} Scene</small>
   <hr>
-  {{sceneMeta | async | json}}
+  <small>FROM A PROMISE: {{sceneMeta | async | json}}</small>
+  <hr>
+  <small>OBSERVABLE: {{dialogNodes | async | json}}</small>
   </footer>

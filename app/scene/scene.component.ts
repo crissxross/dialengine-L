@@ -17,15 +17,21 @@ import {Api} from '../services/api';
 export class SceneComponent implements OnInit {
 
   sceneMeta;
+  dialogNodes;
 
   constructor(public api: Api, private _dialogService: DialogService) { }
 
   ngOnInit() {
     console.log('Hello SceneComponent');
     this.getSceneMeta();
+    this.getSceneDialog();
   }
 
   getSceneMeta() {
-    this.sceneMeta = this._dialogService.getSceneMeta();
+    this.sceneMeta = this._dialogService.getSceneMetaPromise();
+  }
+
+  getSceneDialog() {
+    this.dialogNodes = this._dialogService.getSceneDialog();
   }
 }

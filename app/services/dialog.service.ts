@@ -25,7 +25,7 @@ export class DialogService {
   getSceneMeta() {
     let scMetaData = this.sceneDataService.getSceneMeta();
     console.log("scMetaData!!!", scMetaData);
-    return this.sceneMeta = Observable.fromPromise(scMetaData);
+    // return this.sceneMeta = Observable.from(scMetaData);
   }
 
   getActorSimpleDialog() {
@@ -38,6 +38,13 @@ export class DialogService {
     let playerData = this.sceneDataService.getPlayerSimpleDialog();
     console.log("playerData:", playerData);
     return this.playerNodes = Observable.fromPromise(playerData);
+  }
+
+  // EXPERIMENT - USING PROMISE HERE
+  getSceneMetaPromise() {
+    let scMetaDataPromise = this.sceneDataService.getSceneMetaPromise();
+    console.log("scMetaDataPromise!!!", scMetaDataPromise);
+    return this.sceneMeta = Observable.fromPromise(scMetaDataPromise);
   }
 
 }

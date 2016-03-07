@@ -1,6 +1,7 @@
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
-// Don't need Response from 'angular2/http' if not using observables in this service
+import {Http, Response} from 'angular2/http';
+import { Observable } from 'rxjs/Rx';
+
 
 @Injectable()
 export class SceneDataService {
@@ -14,15 +15,12 @@ export class SceneDataService {
 
   getSceneDialog() {
     return this.http.get(this._sceneUrl)
-      .toPromise()
-      .then(res => res.json().dialogNodes, this.handleError)
-      .then(data => {
-        // console.log(data);
-        return data;
-      });
+      .map((res: Response) => res.json().dialogNodes)
+      .do(dialogNodes => console.log(dialogNodes))
+      .catch(this.handleError);
   }
 
-  getSceneMeta() {
+  getSceneMeta() { // FIX - CHANGE TO OBSERVABLE
     return this.http.get(this._sceneUrl)
       .toPromise()
       .then(res => res.json().meta, this.handleError)
@@ -33,27 +31,43 @@ export class SceneDataService {
   }
 
 
-  getActorSimpleDialog() {
+  getActorSimpleDialog() { // FIX - CHANGE TO OBSERVABLE
     return this.http.get(this._simpleUrl)
       .toPromise()
-      .then(res => res.json().actor[0], this.handleError)
+      .then(res => res.json().actor[0], this.handlePromiseError)
       .then(data => {
         // console.log(data);
         return data;
       });
   }
 
-  getPlayerSimpleDialog() {
+  getPlayerSimpleDialog() { // FIX - CHANGE TO OBSERVABLE
     return this.http.get(this._simpleUrl)
       .toPromise()
-      .then(res => res.json().player, this.handleError)
+      .then(res => res.json().player, this.handlePromiseError)
       .then(data => {
         // console.log(data);
         return data;
       });
   }
 
-  private handleError(error: any) {
+  private handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
+  }
+
+  // EXPERIMENTAL USING PROMISES -------------------
+  getSceneMetaPromise() {
+    return this.http.get(this._sceneUrl)
+      .toPromise()
+      .then(res => res.json().meta, this.handlePromiseError)
+      .then(data => {
+        // console.log(data);
+        return data;
+      });
+  }
+
+  private handlePromiseError(error: any) {
     console.error(error);
     return Promise.reject(error.message || error.json().error || 'Server error');
   }
