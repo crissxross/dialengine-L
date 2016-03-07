@@ -1,6 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
+import {Api} from '../services/api';
+
 @Component({
   selector: 'home',
   templateUrl: 'app/home/home.component.html',
@@ -10,7 +12,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public api: Api) { }
 
   ngOnInit() { }
 }

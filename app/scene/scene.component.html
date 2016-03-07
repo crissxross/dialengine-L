@@ -3,5 +3,7 @@
 <player></player>
 </div>
 <footer>
-  <small>Scene</small>
+  <small>{{api.title}} Scene</small>
+  <hr>
+  {{sceneMeta | async | json}}
   </footer>

@@ -1,8 +1,11 @@
 import {Component} from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {HomeComponent} from './home/home.component';
 import {SceneComponent} from './scene/scene.component';
+import {Api} from './services/api';
+import {SceneDataService} from './services/scenedata.service'
 
 
 @Component({
@@ -10,10 +13,14 @@ import {SceneComponent} from './scene/scene.component';
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, Api, SceneDataService]
 })
 @RouteConfig([
   { path: '/home', name: 'Home', component: HomeComponent },
   { path: '/scene', name: 'Scene', component: SceneComponent }
 ])
-export class AppComponent { }
+export class AppComponent {
+
+  constructor(public api: Api) {
+  }
+ }
