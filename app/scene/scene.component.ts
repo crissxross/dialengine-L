@@ -28,7 +28,7 @@ export class SceneComponent implements OnInit {
   }
 
   getSceneMeta() {
-    this.sceneMeta = this._dialogService.getSceneMetaPromise();
+    this.sceneMeta = this._dialogService.getSceneMeta();
   }
 
   getSceneDialog() {

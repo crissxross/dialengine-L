@@ -6,9 +6,6 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class SceneDataService {
 
-// NOTE SQLite (Ionic) returns a promise so will need to refactor
-// 	to use Observable.fromPromise with SQLite (Ionic) - but check??
-
   private _sceneUrl = '../../content/mock-data/mock-dialog.json';
   private _simpleUrl = '../../content/mock-data/simple-dialog.json';
 
@@ -21,35 +18,25 @@ export class SceneDataService {
       .catch(this.handleError);
   }
 
-  getSceneMeta() { // FIX - CHANGE TO OBSERVABLE
+  getSceneMeta() {
     return this.http.get(this._sceneUrl)
-      .toPromise()
-      .then(res => res.json().meta, this.handleError)
-      .then(data => {
-        // console.log(data);
-        return data;
-      });
+      .map((res: Response) => res.json().meta)
+      .do(meta => console.log(meta))
+      .catch(this.handleError);
   }
 
-
-  getActorSimpleDialog() { // FIX - CHANGE TO OBSERVABLE
+  getActorSimpleDialog() {
     return this.http.get(this._simpleUrl)
-      .toPromise()
-      .then(res => res.json().actor[0], this.handlePromiseError)
-      .then(data => {
-        // console.log(data);
-        return data;
-      });
+      .map((res: Response) => res.json().actor)
+      .do(actor => console.log(actor))
+      .catch(this.handleError);
   }
 
-  getPlayerSimpleDialog() { // FIX - CHANGE TO OBSERVABLE
+  getPlayerSimpleDialog() {
     return this.http.get(this._simpleUrl)
-      .toPromise()
-      .then(res => res.json().player, this.handlePromiseError)
-      .then(data => {
-        // console.log(data);
-        return data;
-      });
+      .map((res: Response) => res.json().player)
+      .do(player => console.log(player))
+      .catch(this.handleError);
   }
 
   private handleError(error: Response) {
@@ -57,20 +44,7 @@ export class SceneDataService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
-  // EXPERIMENTAL USING PROMISES -------------------
-  getSceneMetaPromise() {
-    return this.http.get(this._sceneUrl)
-      .toPromise()
-      .then(res => res.json().meta, this.handlePromiseError)
-      .then(data => {
-        // console.log(data);
-        return data;
-      });
-  }
-
-  private handlePromiseError(error: any) {
-    console.error(error);
-    return Promise.reject(error.message || error.json().error || 'Server error');
-  }
-
 }
+
+// NOTE SQLite (Ionic) returns a promise so will need to refactor
+// 	to use Observable.fromPromise with SQLite (Ionic) BUT check??
