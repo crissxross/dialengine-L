@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Input} from 'angular2/core';
 
 @Component({
   selector: 'actor',
@@ -7,6 +7,7 @@ import {Component, OnInit} from 'angular2/core';
 })
 
 export class ActorComponent implements OnInit {
+  @Input() aNode;
 
   constructor() { }
 

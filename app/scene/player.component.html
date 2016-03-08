@@ -1,9 +1,7 @@
 <div class="player-wrapper">
-  <p class="player-speaks">I am Player</p>
-  <!--<p class="player-speaks">{{ pNode }}</p>-->
+  <p class="player-speaks">PLAYER SAYS: {{ pNode | async | json }}</p>
   <div class="thinks">
-    <p>I'm thinking</p>
-    <!--<p>{{ pThought }}</p>-->
+    <p>{{ pThought }}</p>
     <div class="options">
       <p>
         <button>option one</button>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Input} from 'angular2/core';
 
 @Component({
   selector: 'player',
@@ -7,6 +7,8 @@ import {Component, OnInit} from 'angular2/core';
 })
 
 export class PlayerComponent implements OnInit {
+  @Input() pNode: string[];
+  @Input() pThought: string;
 
   constructor() { }
 
