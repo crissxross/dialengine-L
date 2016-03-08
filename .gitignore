@@ -13,6 +13,7 @@ jspm_packages
 
 # IDEs and editors
 /.idea
+.eslintrc.json
 
 # misc
 .sass-cache/

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class SceneDataService {
 
-  // Using a PROMISE because SQLite (Ionic) returns a promise
+// NOTE SQLite (Ionic) returns a promise so will need to refactor
+// 	to use Observable.fromPromise with SQLite (Ionic) - but check??
 
   private _sceneUrl = '../../content/mock-data/mock-dialog.json';
   private _simpleUrl = '../../content/mock-data/simple-dialog.json';
