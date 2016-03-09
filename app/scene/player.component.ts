@@ -9,6 +9,7 @@ import {Component, OnInit, Input} from 'angular2/core';
 export class PlayerComponent implements OnInit {
   @Input() pNode: string[];
   @Input() pThought: string;
+  @Input() pOptions;
 
   constructor() { }
 

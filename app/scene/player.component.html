@@ -3,10 +3,11 @@
   <div class="thinks">
     <p>{{ pThought }}</p>
     <div class="options">
-      <p>
-        <button>option one</button>
-        <button>option two</button>
-      </p>
+      <ul>
+        <li *ngFor="#option of pOptions">
+          <button>{{ option }}</button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

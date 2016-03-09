@@ -20,6 +20,7 @@ export class SceneComponent implements OnInit {
   actorNodes;
   playerNodes;
   playerThought: string;
+  playerOptions: string[];
 
   constructor(public api: Api, private _dialogService: DialogService) { }
 
@@ -30,6 +31,7 @@ export class SceneComponent implements OnInit {
     this.getActorSimpleDialog();
     this.getPlayerSimpleDialog();
     this.getPlayerThoughts();
+    this.getPlayerOptions();
   }
 
   getSceneMeta() {
@@ -50,5 +52,13 @@ export class SceneComponent implements OnInit {
 
   getPlayerThoughts() {
     this.playerThought = "I'm thinking player thoughts.";
-}
+  }
+
+  getPlayerOptions() {
+    this.playerOptions = [
+      "Option one?",
+      "Or maybe I should choose option two?",
+      "Or even option three?"
+    ]
+  }
 }
