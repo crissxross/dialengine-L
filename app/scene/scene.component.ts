@@ -9,7 +9,7 @@ import {Api} from '../services/api';
   selector: 'scene',
   templateUrl: 'app/scene/scene.component.html',
   styleUrls: ['app/scene/scene.component.css'],
-  providers: [DialogService, Api],
+  // providers: [DialogService],
   directives: [ActorComponent, PlayerComponent]
 })
 
