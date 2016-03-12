@@ -1,5 +1,4 @@
 * {
-  /*color: lightblue;*/
   box-sizing: border-box;
 }
 .scene-wrapper {
@@ -9,7 +8,9 @@
   height: 100%;
   /*padding: 10px;*/
   background-color: #3D3D32;
-  color: lightblue;
+}
+.experiment-wrapper {
+  padding: 20px;
 }
 footer {
   padding: 12px 0 0 0;

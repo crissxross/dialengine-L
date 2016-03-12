@@ -8,32 +8,40 @@ export class SceneDataService {
 
   private _sceneUrl = '../../content/mock-data/mock-dialog.json';
   private _simpleUrl = '../../content/mock-data/simple-dialog.json';
+  private _simpleDataUrl = '../../content/mock-data/simple-dialog-data.json';
 
-  constructor(private http: Http) { }
+  constructor(private _http: Http) { }
 
   getSceneDialog() {
-    return this.http.get(this._sceneUrl)
+    return this._http.get(this._sceneUrl)
       .map((res: Response) => res.json().dialogNodes)
       .do(dialogNodes => console.log(dialogNodes))
       .catch(this.handleError);
   }
 
   getSceneMeta() {
-    return this.http.get(this._sceneUrl)
+    return this._http.get(this._sceneUrl)
       .map((res: Response) => res.json().meta)
       .do(meta => console.log(meta))
       .catch(this.handleError);
   }
 
+  getSimpleDialog() {
+    return this._http.get(this._simpleDataUrl)
+      .map((res: Response) => res.json().data)
+      .do(data => console.log(data))
+      .catch(this.handleError);
+  }
+
   getActorSimpleDialog() {
-    return this.http.get(this._simpleUrl)
+    return this._http.get(this._simpleUrl)
       .map((res: Response) => res.json().actor)
       .do(actor => console.log(actor))
       .catch(this.handleError);
   }
 
   getPlayerSimpleDialog() {
-    return this.http.get(this._simpleUrl)
+    return this._http.get(this._simpleUrl)
       .map((res: Response) => res.json().player)
       .do(player => console.log(player))
       .catch(this.handleError);

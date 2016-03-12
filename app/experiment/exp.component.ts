@@ -13,17 +13,21 @@ export class ExperimentComponent implements OnInit {
 
   sceneMeta;
   dialogNodes;
+  simpleNodes;
 
-  constructor(public api: Api, private _dialogService: DialogService) { }
+  constructor(private _dialogService: DialogService) { }
 
-  ngOnInit() { }
-
-  getSceneMeta() {
-    this.sceneMeta = this._dialogService.getSceneMeta();
+  ngOnInit() {
+    this.getSimpleDialog();
   }
 
-  getSceneDialog() {
-    this.dialogNodes = this._dialogService.getSceneDialog();
+  getSimpleDialog() {
+    this.simpleNodes = this._dialogService.getSimpleDialog();
   }
+
+
+  // getSceneDialog() {
+  //   this.dialogNodes = this._dialogService.getSceneDialog();
+  // }
 
 }
