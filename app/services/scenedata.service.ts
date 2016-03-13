@@ -12,6 +12,15 @@ export class SceneDataService {
 
   constructor(private _http: Http) { }
 
+
+getSimpleDialog() {
+    return this._http.get(this._simpleDataUrl)
+      .map((res: Response) => res.json().data)
+      // .do(data => console.log(data))
+      .catch(this.handleError);
+  }
+
+
   getSceneDialog() {
     return this._http.get(this._sceneUrl)
       .map((res: Response) => res.json().dialogNodes)
@@ -23,13 +32,6 @@ export class SceneDataService {
     return this._http.get(this._sceneUrl)
       .map((res: Response) => res.json().meta)
       .do(meta => console.log(meta))
-      .catch(this.handleError);
-  }
-
-  getSimpleDialog() {
-    return this._http.get(this._simpleDataUrl)
-      .map((res: Response) => res.json().data)
-      .do(data => console.log(data))
       .catch(this.handleError);
   }
 

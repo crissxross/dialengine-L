@@ -14,7 +14,7 @@ header {
     flex-shrink: 2;
 }
 nav ul {
-  list-style: none;
+  margin: 10px;
 }
 main {
     height: 700px;

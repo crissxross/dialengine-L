@@ -31,20 +31,20 @@ export class DialogService {
   }
 
   getSimpleDialog() {
-    let simpleDialog = this.sceneDataService.getSimpleDialog();
-    console.log('simpleDialog', simpleDialog);
+    let simpleDialog = this.sceneDataService.getSimpleDialog()
+      .do(data => console.log(data[0].actor[0]));
     return simpleDialog;
 }
 
   getActorSimpleDialog() {
     let actorData = this.sceneDataService.getActorSimpleDialog();
-    console.log('actorData:', actorData);
+    console.log('actorData: ', actorData);
     return actorData;
   }
 
   getPlayerSimpleDialog() {
     let playerData = this.sceneDataService.getPlayerSimpleDialog();
-    console.log('playerData:', playerData);
+    console.log('playerData: ', playerData);
     return playerData;
   }
 

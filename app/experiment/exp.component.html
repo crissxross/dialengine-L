@@ -1,9 +1,21 @@
 <div class="scene-wrapper">
   <div class="experiment-wrapper">
     <h3>Experimentation</h3>
-    <p>{{ simpleNodes | async | json }}</p>
+    <ul>
+      <li *ngFor="#node of simpleNodes | async">{{node.actor}}</li>
+    </ul>
+    <hr color="#666">
+    <ul>
+      <li *ngFor="#node of simpleNodes | async">{{node.player}}</li>
+    </ul>
+    <br>
+    <hr color="#666">
+    <!--<p>Actor? {{ simpleNodes.actor | async }}</p>-->
+    <p>Timer: {{timer | async }}</p>
   </div>
 </div>
 <footer>
   <small>Experimental</small>
+  <hr color="#666">
+  <!--<p>{{ simpleNodes | async | json }}</p>-->
 </footer>

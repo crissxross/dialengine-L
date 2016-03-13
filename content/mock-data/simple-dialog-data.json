@@ -2,42 +2,42 @@
   "data": [
     {
       "actor": [
-        "Actor 1. This is my first speech"
+        "A1 This is actor's first speech"
       ]
     },
     {
       "player": [
-        "Player 1. This is my first speech"
+        "P1 This is player's first speech"
       ]
     },
     {
       "actor": [
-        "Actor 2. This is my second speech"
+        "A2 This is actor's second speech"
       ]
     },
     {
       "player": [
-        "Player 2. This is my second speech"
+        "P2 This is player's second speech"
       ]
     },
     {
       "actor": [
-        "Actor 3. This is my third speech"
+        "A3 This is actor's third speech"
       ]
     },
     {
       "player": [
-        "Player 3. This is my third speech"
+        "P3 This is player's third speech"
       ]
     },
     {
       "actor": [
-        "Actor 4. This is my fourth speech"
+        "A4 This is actor's fourth speech"
       ]
     },
     {
       "player": [
-        "Player 4. This is my fourth speech"
+        "P4 This is player's fourth speech"
       ]
     }
   ]

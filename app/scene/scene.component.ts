@@ -57,8 +57,8 @@ export class SceneComponent implements OnInit {
   getPlayerOptions() {
     this.playerOptions = [
       "Option one?",
-      "Or maybe I should choose option two?",
-      "Or even option three?"
+      "Or maybe I should choose option two?"
+      // "Or even option three?"
     ]
   }
 }
