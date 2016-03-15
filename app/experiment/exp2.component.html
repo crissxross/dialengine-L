@@ -1,26 +1,25 @@
 <div class="scene-wrapper">
   <div class="experiment-wrapper">
-    <small><ul>
-      <li *ngFor="#node of simpleNodes | async">{{node.character}}</li>
-    </ul></small>
-    <hr color="#666">
+    <!-- Using the Elvis operator ( ?. ) to guard against null and undefined values in property paths -->
+    <!-- SEE: https://angular.io/docs/ts/latest/guide/template-syntax.html#!#elvis -->
+    <small>
     <ul>
-      <li *ngFor="#node of simpleNodes | async">{{node.speaks}}</li>
+      <li *ngFor="#node of simpleNodes | async">
+        {{node.npc?.says}} {{node.player?.says}}</li>
     </ul>
+    </small>
     <hr color="#666">
-    <!--<ul>
-      <li *ngFor="#node of simpleNodes | async">{{node.speaks}}</li>
-    </ul>-->
     <br>
     <hr color="#666">
     <!--<ul>
       <li *ngFor="#npcNode of npcNodes | async">{{npcNode}}</li>
       </ul>-->
-      <p> {{ npcNodes | async | json }}</p>
+    <p><small>npcNodes filtered:</small>
+      <br> {{ npcNodes | async | json }}</p>
   </div>
 </div>
 <footer>
   <p>Experiment 2</p>
   <hr color="#666">
-      <!--<p>Timer: {{timer | async }}</p>-->
+  <!--<p>Timer: {{timer | async }}</p>-->
 </footer>

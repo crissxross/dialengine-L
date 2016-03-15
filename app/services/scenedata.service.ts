@@ -12,15 +12,14 @@ export class SceneDataService {
 
   constructor(private _http: Http) { }
 
-
-getSimpleData() {
-    return this._http.get(this._simpleDataUrl)
-      .map((res: Response) => res.json().data)
+  getSimpleDialog() {
+    return this._http.get(this._simpleUrl)
+      .map((res: Response) => res.json().dialog)
       // .do(data => console.log(data))
       .catch(this.handleError);
   }
 
-getSimpleDialog() {
+  getSimpleData() {
     return this._http.get(this._simpleDataUrl)
       .map((res: Response) => res.json().data)
       // .do(data => console.log(data))
@@ -42,19 +41,19 @@ getSimpleDialog() {
       .catch(this.handleError);
   }
 
-  getActorSimpleDialog() {
-    return this._http.get(this._simpleUrl)
-      .map((res: Response) => res.json().actor)
-      .do(actor => console.log(actor))
-      .catch(this.handleError);
-  }
+  // getActorSimpleDialog() {
+  //   return this._http.get(this._simpleUrl)
+  //     .map((res: Response) => res.json().actor)
+  //     .do(actor => console.log(actor))
+  //     .catch(this.handleError);
+  // }
 
-  getPlayerSimpleDialog() {
-    return this._http.get(this._simpleUrl)
-      .map((res: Response) => res.json().player)
-      .do(player => console.log(player))
-      .catch(this.handleError);
-  }
+  // getPlayerSimpleDialog() {
+  //   return this._http.get(this._simpleUrl)
+  //     .map((res: Response) => res.json().player)
+  //     .do(player => console.log(player))
+  //     .catch(this.handleError);
+  // }
 
   private handleError(error: Response) {
     console.error(error);

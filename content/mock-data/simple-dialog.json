@@ -1,14 +1,60 @@
 {
-  "actor": [
-    "Actor 1. This is my first speech",
-    "Actor 2. This is my second speech",
-    "Actor 3. This is my third speech",
-    "Actor 4. This is my fourth speech"
-  ],
-  "player": [
-    "Player 1. This is my first speech",
-    "Player 2. This is my second speech",
-    "Player 3. This is my third speech",
-    "Player 4. This is my fourth speech"
+  "dialog": [
+    {
+      "npc": {
+        "says": [
+          "n1 This is NPC's first speech"
+        ]
+      }
+    },
+    {
+      "player": {
+        "says": [
+          "P1 This is player's first speech"
+        ]
+      }
+    },
+    {
+      "npc": {
+        "says": [
+          "n2 This is NPC's second speech"
+        ]
+      }
+    },
+    {
+      "player": {
+        "says": [
+          "P2 This is player's second speech"
+        ]
+      }
+    },
+    {
+      "npc": {
+        "says": [
+          "n3 This is NPC's third speech"
+        ]
+      }
+    },
+    {
+      "player": {
+        "says": [
+          "P3 This is player's third speech"
+        ]
+      }
+    },
+    {
+      "npc": {
+        "says": [
+          "n4 This is NPC's fourth speech"
+        ]
+      }
+    },
+    {
+      "player": {
+        "says": [
+          "P4 This is player's fourth speech"
+        ]
+      }
+    }
   ]
 }
