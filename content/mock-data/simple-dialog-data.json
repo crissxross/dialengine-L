@@ -1,42 +1,50 @@
 {
   "data": [
     {
-      "actor": [
-        "A1 This is actor's first speech"
+      "character": "npc",
+      "speaks": [
+        "n1 This is NPC's first speech"
       ]
     },
     {
-      "player": [
+      "character": "player",
+      "speaks": [
         "P1 This is player's first speech"
       ]
     },
     {
-      "actor": [
-        "A2 This is actor's second speech"
+      "character": "npc",
+      "speaks": [
+        "n2 This is NPC's second speech"
       ]
     },
     {
-      "player": [
+      "character": "player",
+      "speaks": [
         "P2 This is player's second speech"
       ]
     },
     {
-      "actor": [
-        "A3 This is actor's third speech"
+      "character": "npc",
+      "speaks": [
+        "n3 This is NPC's third speech"
       ]
     },
     {
-      "player": [
+      "character": "player",
+      "speaks": [
         "P3 This is player's third speech"
       ]
     },
     {
-      "actor": [
-        "A4 This is actor's fourth speech"
+      "character": "npc",
+      "speaks": [
+        "n4 This is NPC's fourth speech"
       ]
     },
     {
-      "player": [
+      "character": "player",
+      "speaks": [
         "P4 This is player's fourth speech"
       ]
     }

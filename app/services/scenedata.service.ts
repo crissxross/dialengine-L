@@ -13,6 +13,13 @@ export class SceneDataService {
   constructor(private _http: Http) { }
 
 
+getSimpleData() {
+    return this._http.get(this._simpleDataUrl)
+      .map((res: Response) => res.json().data)
+      // .do(data => console.log(data))
+      .catch(this.handleError);
+  }
+
 getSimpleDialog() {
     return this._http.get(this._simpleDataUrl)
       .map((res: Response) => res.json().data)

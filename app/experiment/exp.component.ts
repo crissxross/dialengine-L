@@ -17,30 +17,37 @@ export class ExperimentComponent implements OnInit {
   dialogNodes;
   simpleNodes;
   timer: Observable<number>;
+  npcNodes;
 
   // constructor(private _dialogService: DialogService) { }
   constructor(private _sceneDataService: SceneDataService) { }
 
   ngOnInit() {
-    this.getSimpleDialog();
-    console.log('OnInit - this.simpleNodes: ', this.simpleNodes);
-
+    this.getSimpleData();
+    // console.log('OnInit - this.simpleNodes: ', this.simpleNodes);
     this.timer = Observable.interval(1000).startWith(0);
+    this.getNpcNodes();
+    // console.log('OnInit - this.npcNodes:', this.npcNodes);
   }
-// Bypassing DialogService
-getSimpleDialog() {
-  this.simpleNodes = this._sceneDataService.getSimpleDialog()
-    .do(data => console.log('simpleNodes:', data));
-      // .do(data => console.log('Just one simpleNode:', data[0].actor));
+  // Bypassing DialogService
+  getSimpleData() {
+    // this.simpleNodes = this._dialogService.getSimpleData()
+    this.simpleNodes = this._sceneDataService.getSimpleData()
+    // .do(data => console.log('simpleNodes:', data));
+    // .do(data => console.log('Just one simpleNode:', data[0].actor));
+  }
+
+  getNpcNodes() {
+    this.npcNodes = this._sceneDataService.getSimpleData()
+      .do(data => console.log('data: ', data))
+      .mergeMap(x => x)
+      .do(x => console.log('x: ', x.character))
+      .filter(y => y.character === 'npc')
+      .do(y => console.log('y:', y.character + ': ' + y.speaks))
+    .do(data => console.log('npcNodes: ', this.npcNodes));
   }
 
 
-
-  // getSimpleDialog() {
-  //   this.simpleNodes = this._dialogService.getSimpleDialog()
-  //     .do(data => console.log('simpleNodes:', data));
-  //     .do(data => console.log('A simpleNode:', data[0].actor));
-  // }
 
 
   // getSceneDialog() {
