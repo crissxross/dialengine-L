@@ -14,35 +14,57 @@ import {Api} from '../services/api';
 export class Experiment2Component implements OnInit {
 
   sceneMeta;
-  dialogNodes;
-  simpleNodes;
+  dialogNode$: Observable<any>;
+  publishedNode$;
+  simpleNodes: Observable<any>;
   timer: Observable<number>;
-  npcNodes;
+  npcNode$: Observable<any>;
+  playerNode$: Observable<any>;
 
   // constructor(private _dialogService: DialogService) { }
   constructor(private _sceneDataService: SceneDataService) { }
 
   ngOnInit() {
+ this.getDialogNodes();
     this.getSimpleDialog();
     // console.log('OnInit - this.simpleNodes: ', this.simpleNodes);
-    this.timer = Observable.interval(1000).startWith(0);
     this.getNpcNodes();
-    // console.log('OnInit - this.npcNodes:', this.npcNodes);
+    // console.log('OnInit - this.npcNode$:', this.npcNode$);
+    this.streamPlayerNodes();
+    // this.timer = Observable.interval(1000).startWith(0);
   }
   // Bypassing DialogService
+getDialogNodes() {
+    this.dialogNode$ = this._sceneDataService.getSimpleDialog()
+      // .do(data => console.log('dialogNode$: ', data));
+    this.publishedNode$ = this.dialogNode$.share(); // SHARED
+  }
+
   getSimpleDialog() {
-    this.simpleNodes = this._sceneDataService.getSimpleDialog()
-    .do(data => console.log('simpleNodes:', data))
+    this.simpleNodes = this.publishedNode$;
+    // .do(data => console.log('simpleNodes:', data));
+  }
+
+
+  streamPlayerNodes() {
+    this.playerNode$ = this.publishedNode$
+      // .do(data => console.log('playerNode$:', data))
+      .mergeMap(data => data)
+      .filter(data => data.player)
+      .do(filtered => console.log('filtered player:', filtered))
+      // .do(filtered => console.log('filtered player: ' + filtered.player.says));
+      // .map(player => player.says)
+      // .do(pSays => console.log('player says:', pSays));
   }
 
   getNpcNodes() {
-    this.npcNodes = this._sceneDataService.getSimpleDialog()
+    this.npcNode$ = this.publishedNode$
       // .do(stuff => console.log('stuff: ', stuff))
       .mergeMap(x => x)
-      .do(x => console.log('x: ', x))
+      // .do(x => console.log('x: ', x))
       .filter(y => y.npc)
-      .do(y => console.log('filtered y: ' + y.npc.says))
-    // .do(data => console.log('npcNodes: ', this.npcNodes));
+    .do(y => console.log('filtered y: ' + y.npc.says))
+    // .do(data => console.log('npcNode$: ', this.npcNode$));
   }
 
 

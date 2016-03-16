@@ -16,7 +16,7 @@ export class SceneDataService {
   getSimpleDialog() {
     return this._http.get(this._simpleUrl)
       .map((res: Response) => res.json().dialog)
-      // .do(data => console.log(data))
+      .do(data => console.log('getSimpleDialog:', data))
       .catch(this.handleError);
   }
 
