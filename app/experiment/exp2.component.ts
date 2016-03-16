@@ -25,46 +25,42 @@ export class Experiment2Component implements OnInit {
   constructor(private _sceneDataService: SceneDataService) { }
 
   ngOnInit() {
- this.getDialogNodes();
+    this.getDialogNodes();
     this.getSimpleDialog();
-    // console.log('OnInit - this.simpleNodes: ', this.simpleNodes);
     this.getNpcNodes();
-    // console.log('OnInit - this.npcNode$:', this.npcNode$);
     this.streamPlayerNodes();
     // this.timer = Observable.interval(1000).startWith(0);
   }
   // Bypassing DialogService
-getDialogNodes() {
+  getDialogNodes() {
     this.dialogNode$ = this._sceneDataService.getSimpleDialog()
-      // .do(data => console.log('dialogNode$: ', data));
     this.publishedNode$ = this.dialogNode$.share(); // SHARED
   }
 
   getSimpleDialog() {
     this.simpleNodes = this.publishedNode$;
-    // .do(data => console.log('simpleNodes:', data));
   }
 
 
   streamPlayerNodes() {
     this.playerNode$ = this.publishedNode$
-      // .do(data => console.log('playerNode$:', data))
       .mergeMap(data => data)
       .filter(data => data.player)
-      .do(filtered => console.log('filtered player:', filtered))
-      // .do(filtered => console.log('filtered player: ' + filtered.player.says));
-      // .map(player => player.says)
-      // .do(pSays => console.log('player says:', pSays));
+      // .do(filtered => console.log('filtered player:', filtered))
+      .map(filtered => filtered.player.says)
+      .do(says => console.log(says));
   }
+
+// NOTE: Should I use scan to show each 'says' in turn? Merged with an interval?
 
   getNpcNodes() {
     this.npcNode$ = this.publishedNode$
-      // .do(stuff => console.log('stuff: ', stuff))
       .mergeMap(x => x)
       // .do(x => console.log('x: ', x))
       .filter(y => y.npc)
-    .do(y => console.log('filtered y: ' + y.npc.says))
-    // .do(data => console.log('npcNode$: ', this.npcNode$));
+      // .do(y => console.log('filtered y:', y))
+      .map(filtered => filtered.npc.says)
+      .do(says => console.log(says));
   }
 
 
