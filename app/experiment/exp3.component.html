@@ -1,0 +1,30 @@
+<div class="scene-wrapper">
+  <div class="experiment-wrapper">
+    <h1>Exp Three</h1>
+    <hr color="#666">
+    <br>
+    <small>npcNode$ filtered:</small>
+      <br>
+      <p>{{ npcNode$ | async }}</p>
+    <hr color="#666">
+    <p><small>playerNode$ filtered:</small>
+    <br>
+    <p>{{ playerNode$ | async }}</p>
+    <hr color="#666">
+  </div>
+</div>
+<footer>
+  <p>Experiment 3</p>
+  <hr color="#666">
+  <small>publishedNode$ shared with all subscribers:</small>
+  <p><small>{{ publishedNode$ | async | json }}</small></p>
+  <hr color="#666">
+  <small>
+    <ul>
+      <!-- Using Elvis operator ( ?. ) -->
+      <li *ngFor="#node of simpleNodes | async">
+        {{node.npc?.says}} {{node.player?.says}}</li>
+    </ul>
+    </small>
+    <hr color="#666">
+</footer>

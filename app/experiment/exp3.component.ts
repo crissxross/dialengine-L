@@ -6,18 +6,17 @@ import {DialogService} from '../services/dialog.service';
 import {Api} from '../services/api';
 
 @Component({
-  selector: 'experiment2',
-  templateUrl: 'app/experiment/exp2.component.html',
+  selector: 'experiment3',
+  templateUrl: 'app/experiment/exp3.component.html',
   styleUrls: ['app/experiment/exp.component.css']
 })
-// EXPERIMENT 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!
-export class Experiment2Component implements OnInit {
+// 3************* EXPERIMENT 3 ****************
+export class Experiment3Component implements OnInit {
 
   sceneMeta;
   dialogNode$: Observable<any>;
   publishedNode$;
   simpleNodes: Observable<any>;
-  timer: Observable<number>;
   npcNode$: Observable<any>;
   playerNode$: Observable<any>;
 
@@ -29,7 +28,6 @@ export class Experiment2Component implements OnInit {
     this.getSimpleDialog();
     this.getNpcNodes();
     this.streamPlayerNodes();
-    // this.timer = Observable.interval(1000).startWith(0);
   }
   // Bypassing DialogService
   getDialogNodes() {

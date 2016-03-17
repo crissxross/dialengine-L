@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {SceneComponent} from './scene/scene.component';
 import {ExperimentComponent} from './experiment/exp.component';
 import {Experiment2Component} from './experiment/exp2.component';
+import {Experiment3Component} from './experiment/exp3.component';
 
 import {Api} from './services/api';
 import {SceneDataService} from './services/scenedata.service';
@@ -23,7 +24,8 @@ import {DialogService} from './services/dialog.service';
   { path: '/home', name: 'Home', component: HomeComponent },
   { path: '/scene', name: 'Scene', component: SceneComponent },
   { path: '/experiment', name: 'Experiment', component: ExperimentComponent },
-{ path: '/experiment2', name: 'Experiment2', component: Experiment2Component }
+  { path: '/experiment2', name: 'Experiment2', component: Experiment2Component },
+{ path: '/experiment3', name: 'Experiment3', component: Experiment3Component }
 ])
 export class AppComponent {
 
