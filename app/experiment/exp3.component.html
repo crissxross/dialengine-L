@@ -1,6 +1,9 @@
 <div class="scene-wrapper">
   <div class="experiment-wrapper">
-    <h1>Exp Three</h1>
+    <h2>3 Three</h2>
+    <hr color="#666">
+    <br>
+    <p>{{ dialog$ | async | json }}</p>
     <hr color="#666">
     <br>
     <small>npcNode$ filtered:</small>
@@ -14,7 +17,7 @@
   </div>
 </div>
 <footer>
-  <p>Experiment 3</p>
+  <p>Experiment 3  - using ??</p>
   <hr color="#666">
   <small>publishedNode$ shared with all subscribers:</small>
   <p><small>{{ publishedNode$ | async | json }}</small></p>

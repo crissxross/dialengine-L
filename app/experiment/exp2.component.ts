@@ -15,7 +15,7 @@ export class Experiment2Component implements OnInit {
 
   sceneMeta;
   dialogNode$: Observable<any>;
-  publishedNode$;
+  publishedNode$: Observable<any>;
   simpleNodes: Observable<any>;
   timer: Observable<number>;
   npcNode$: Observable<any>;
@@ -33,7 +33,7 @@ export class Experiment2Component implements OnInit {
   }
   // Bypassing DialogService
   getDialogNodes() {
-    this.dialogNode$ = this._sceneDataService.getSimpleDialog()
+    this.dialogNode$ = this._sceneDataService.getSimpleDialog();
     this.publishedNode$ = this.dialogNode$.share(); // SHARED
   }
 
