@@ -11,10 +11,40 @@ import { Observable } from 'rxjs/Rx';
 export class Experiment4Component implements OnInit {
 
   simpleDialog;
+  speeches = [
+  'Speech 1. My first speech.',
+  'Speech 2. My second speech.',
+  'Speech 3. My third speech.',
+  'Speech 4. My fourth speech.'
+];
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.startInterval(this.speeches);
+    this.startClockSpeeches(this.speeches);
+  }
+
+  startInterval(speeches) {
+    let interval = Observable.interval(2000).take(4).map(x => (x - 1) + 1);
+    interval.subscribe(i => console.log('INTERVAL', speeches[i]));
+  }
+
+  startClockSpeeches(speeches) {
+    var clock = Observable.interval(1000)
+      .take(speeches.length - 1).map(x => x + 1).startWith(0)
+      .share();
+
+    console.log('a subscribed');
+    clock.subscribe(i => console.log('a: ' + speeches[i]));
+
+    setTimeout(function() {
+      console.log('b subscribed');
+      clock.subscribe(i => console.log('   b: ' + speeches[i]));
+    }, 2500);
+
+  }
+
 }
 
 

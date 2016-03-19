@@ -25,7 +25,7 @@
   <small>
     <ul>
       <!-- Using Elvis operator ( ?. ) -->
-      <li *ngFor="#node of simpleNodes | async">
+      <li *ngFor="#node of simpleNode$ | async">
         {{node.npc?.says}} {{node.player?.says}}</li>
     </ul>
     </small>

@@ -41,6 +41,7 @@ export class Experiment3Component implements OnInit {
   streamDialog() {
     this.dialog$ = this.publishedNode$
       .mergeMap(data => data)
+      // .map(x => x.filter(y => y.npc))
       .do(data => console.log('streamDialog:', data));
   }
 
