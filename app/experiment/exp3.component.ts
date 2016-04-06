@@ -35,14 +35,19 @@ export class Experiment3Component implements OnInit {
   getDialogNodes() {
     this.dialogNode$ = this._sceneDataService.getSimpleDialog();
     this.publishedNode$ = this.dialogNode$.share(); // SHARED
-      // .do(published => console.log('publishedNode$:', this.publishedNode$));
+    // .do(published => console.log('publishedNode$:', this.publishedNode$));
   }
 
   streamDialog() {
     this.dialog$ = this.publishedNode$
+      // .map(x => x.filter(y => y.npc)) // <- filter WORKS here or line below
+      // .map(x => x.filter(y => y.player))
+      .do(data => console.table(data))
+      .do(data => console.log('streamDialog BEFORE mergeMap:', data))
       .mergeMap(data => data)
-      // .map(x => x.filter(y => y.npc))
-      .do(data => console.log('streamDialog:', data));
+      // .map(x => x.filter(y => y.npc)) // <- ERROR
+      .do(data => console.table(data))
+      .do(data => console.log('streamDialog after mergeMap:', data));
   }
 
   // streamDialog() {
@@ -52,7 +57,9 @@ export class Experiment3Component implements OnInit {
   // }
 
   getSimpleDialog() {
+    // console.table(this.simpleNode$);
     this.simpleNode$ = this.publishedNode$;
+    // console.table(this.publishedNode$);
   }
 
   streamPlayerNodes() {
@@ -61,7 +68,7 @@ export class Experiment3Component implements OnInit {
       .filter(data => data.player)
       // .do(filtered => console.log('filtered player:', filtered))
       .map(filtered => filtered.player.says)
-      // .do(says => console.log(says));
+    // .do(says => console.log(says));
   }
 
   // NOTE: Should I use scan to show each 'says' in turn? Merged with an interval?
@@ -73,7 +80,7 @@ export class Experiment3Component implements OnInit {
       .filter(y => y.npc)
       // .do(y => console.log('filtered y:', y))
       .map(filtered => filtered.npc.says)
-      // .do(says => console.log(says));
+    // .do(says => console.log(says));
   }
 
 }
